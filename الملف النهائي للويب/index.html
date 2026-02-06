@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaza Workspaces - مساحات العمل في غزة</title>
+
+    <!-- مكتبات CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ملفاتنا -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- رأس الصفحة -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-map-marker-alt logo-icon"></i>
+                <span class="logo-text">Gaza Workspaces</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home" class="active">الرئيسية</a></li>
+                <li><a href="#spaces">المساحات</a></li>
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#pricing">الأسعار</a></li>
+                <li><a href="#booking-form">الحجز</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <button class="btn btn-outline" id="loginBtn">تسجيل دخول</button>
+                <button class="btn btn-primary" id="registerBtn">إنشاء حساب</button>
+            </div>
+
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- القائمة المتنقلة -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="logo">
+                <i class="fas fa-map-marker-alt logo-icon"></i>
+                <span class="logo-text" style="-webkit-text-fill-color: white;">Gaza Workspaces</span>
+            </div>
+            <div class="mobile-toggle" id="closeMobileNav">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="active">الرئيسية</a></li>
+            <li><a href="#spaces">المساحات</a></li>
+            <li><a href="#features">المميزات</a></li>
+            <li><a href="#video">فيديو</a></li>
+            <li><a href="#pricing">الأسعار</a></li>
+            <li><a href="#booking-form">الحجز</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+            <li><a href="#" id="mobileLoginBtn">تسجيل دخول</a></li>
+            <li><a href="#" id="mobileRegisterBtn">إنشاء حساب</a></li>
+        </ul>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- قسم الهيرو -->
+    <section class="hero" id="home">
+        <div class="floating-shapes">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text animate__animated animate__fadeInUp">
+                <h1>مساحات عمل متميزة في كل أنحاء غزة</h1>
+                <p>احجز مساحة العمل المناسبة لك من خلال نظامنا الذكي. اعرف حالة المساحة قبل الذهاب، واحصل على تأكيد فوري
+                    مع إشعارات تذكير. أنظمة حديثة وأجواء محفزة للإبداع والإنتاجية.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="exploreSpacesBtn">
+                        <i class="fas fa-search-location"></i> استعرض المساحات
+                    </button>
+                    <button class="btn btn-outline" id="bookNowBtn">
+                        <i class="fas fa-calendar-check"></i> احجز الآن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المساحات -->
+    <section class="section" id="spaces">
+        <div class="section-title">
+            <h2>مساحات العمل المتاحة</h2>
+            <p>اختر من بين أفضل مساحات العمل في قطاع غزة، مجهزة بكل ما تحتاجه للإنتاجية والراحة</p>
+        </div>
+
+        <!-- الفلاتر والبحث -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="available">متاحة الآن</button>
+            <button class="filter-btn" data-filter="occupied">ممتلئة</button>
+            <button class="filter-btn" data-filter="gaza">غزة المدينة</button>
+            <button class="filter-btn" data-filter="north">شمال غزة</button>
+        </div>
+
+        <!-- شريط البحث -->
+        <div class="search-container mb-5">
+            <div class="input-group search-box">
+                <input type="text" id="searchInput" class="form-control"
+                    placeholder="ابحث عن مساحة بالاسم أو الموقع أو الوصف...">
+                <button class="btn btn-primary" id="searchBtn">
+                    <i class="fas fa-search"></i> بحث
+                </button>
+            </div>
+        </div>
+
+        <!-- شبكة المساحات -->
+        <div class="spaces-grid" id="spacesContainer">
+            <!-- سيتم إضافة المساحات ديناميكياً -->
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="section" id="features">
+        <div class="section-title">
+            <h2>لماذا تختار نظامنا؟</h2>
+            <p>نقدم لك تجربة حجز فريدة وسهلة مع مميزات لا تجدها في أي نظام آخر</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-bell feature-icon-large"></i>
+                <h3>إشعارات فورية</h3>
+                <p>استلم تأكيد الحجز وإشعارات التذكير قبل موعدك عبر البريد والرسائل النصية</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-map-marked-alt feature-icon-large"></i>
+                <h3>خرائط تفاعلية</h3>
+                <p>اعرف موقع كل مساحة عمل بدقة مع صور حية واتجاهات الوصول</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-clock feature-icon-large"></i>
+                <h3>حالة مباشرة</h3>
+                <p>اعرف إذا كانت المساحة ممتلئة أو متاحة قبل الذهاب إليها</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-shield-alt feature-icon-large"></i>
+                <h3>حجز آمن</h3>
+                <p>نظام دفع آمن مع خيارات متعددة وضمان استرجاع المبلغ في حال الإلغاء</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفيديو -->
+    <section class="section video-section" id="video">
+        <div class="section-title">
+            <h2>جولة في مساحاتنا</h2>
+            <p>شاهد هذا الفيديو التعريفي لترى أجواء العمل في مساحاتنا</p>
+        </div>
+    
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- Replace this video tag with the following -->
+                <video id="workspaceVideo" controls>
+                    <source src="video/vedio.mp4" type="video/mp4">
+                    <source src="video/vedio.webm" type="video/webm">
+                    متصفحك لا يدعم تشغيل الفيديو. يرجى تحديث المتصفح.
+                </video>
+            </div>
+            
+            <!-- Add video controls container -->
+            <div class="video-controls">
+                <button class="btn btn-primary" id="playPauseBtn">
+                    <i class="fas fa-play"></i> تشغيل
+                </button>
+                <button class="btn btn-outline" id="muteBtn">
+                    <i class="fas fa-volume-up"></i> صوت
+                </button>
+                <div class="video-time">
+                    <span id="currentTime">00:00</span> / 
+                    <span id="duration">00:00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- جدول الأسعار -->
+    <section class="section pricing-section" id="pricing">
+        <div class="section-title">
+            <h2>باقات الأسعار المميزة</h2>
+            <p>اختر الباقة المناسبة لك ووفر أكثر مع عروضنا الخاصة</p>
+        </div>
+
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover" id="pricingTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>الباقة</th>
+                            <th>المدة</th>
+                            <th>السعر العادي</th>
+                            <th>السعر المميز</th>
+                            <th>المدخرات</th>
+                            <th>المميزات</th>
+                            <th>الحجز</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pricingTableBody">
+                        <!-- سيتم ملؤه بواسطة JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج الحجز -->
+    <section class="section booking-section" id="booking-form">
+        <div class="section-title">
+            <h2>احجز مساحتك الآن</h2>
+            <p>املأ النموذج التالي لتأكيد حجزك في مساحة العمل المفضلة لديك</p>
+        </div>
+
+        <div class="booking-container">
+            <div class="booking-form-container">
+                <h3 class="booking-form-title">تفاصيل الحجز</h3>
+
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label class="form-label">اختر المساحة</label>
+                        <select class="form-control" id="bookingSpace" required>
+                            <option value="">-- اختر مساحة العمل --</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">التاريخ والوقت</label>
+                        <div class="datetime-inputs">
+                            <input type="date" class="form-control" id="bookingDate" required>
+                            <select class="form-control" id="bookingTime" required>
+                                <option value="">-- اختر الوقت --</option>
+                                <option value="8-10">8:00 ص - 10:00 ص</option>
+                                <option value="10-12">10:00 ص - 12:00 م</option>
+                                <option value="12-14">12:00 م - 2:00 م</option>
+                                <option value="14-16">2:00 م - 4:00 م</option>
+                                <option value="16-18">4:00 م - 6:00 م</option>
+                                <option value="18-20">6:00 م - 8:00 م</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">مدة الحجز</label>
+                        <select class="form-control" id="bookingDuration" required>
+                            <option value="2">ساعتان (20 شيكل)</option>
+                            <option value="4">4 ساعات (35 شيكل)</option>
+                            <option value="6">6 ساعات (50 شيكل)</option>
+                            <option value="8">يوم كامل (70 شيكل)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">الغرض من الحجز</label>
+                        <textarea class="form-control" id="bookingPurpose" rows="3"
+                            placeholder="اذكر الغرض من استخدام المساحة (دراسة، عمل، مشروع...)" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">طريقة الدفع</label>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cash" checked>
+                                <span>دفع نقدي في الموقع</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="vodafone">
+                                <span>فودافون كاش</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="visa">
+                                <span>بطاقة ائتمان</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        <i class="fas fa-check-circle"></i> تأكيد الحجز
+                    </button>
+                </form>
+            </div>
+
+            <div class="booking-visual">
+                <div class="booking-animation"></div>
+                <div class="booking-steps">
+                    <h3>كيفية الحجز</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> اختر المساحة المناسبة لك</li>
+                        <li><i class="fas fa-check"></i> حدد التاريخ والوقت المناسبين</li>
+                        <li><i class="fas fa-check"></i> ادخل بياناتك للحصول على تأكيد</li>
+                        <li><i class="fas fa-check"></i> استلم إشعار التذكير قبل موعدك</li>
+                        <li><i class="fas fa-check"></i> استمتع بوقت إنتاجي في مساحتنا</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Gaza Workspaces</h3>
+                <p>منصة حجز مساحات العمل الأولى في قطاع غزة، نهدف إلى توفير بيئات عمل مناسبة ومحفزة للإبداع والإنتاجية.
+                </p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                    <li><a href="#spaces"><i class="fas fa-chevron-left"></i> المساحات</a></li>
+                    <li><a href="#features"><i class="fas fa-chevron-left"></i> المميزات</a></li>
+                    <li><a href="#video"><i class="fas fa-chevron-left"></i> فيديو</a></li>
+                    <li><a href="#pricing"><i class="fas fa-chevron-left"></i> الأسعار</a></li>
+                    <li><a href="#booking-form"><i class="fas fa-chevron-left"></i> الحجز</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>اتصل بنا</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:+970599123456"><i class="fas fa-phone"></i> +970 599 123 456</a></li>
+                    <li><a href="mailto:info@gazaworkspaces.ps"><i class="fas fa-envelope"></i>
+                            info@gazaworkspaces.ps</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> غزة - شارع عمر المختار</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> الأحد - الخميس: 8 صباحاً - 8 مساءً</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>اشترك في نشرتنا</h3>
+                <p>اشترك لتحصل على عروض حصرية وأحدث المساحات المتاحة</p>
+                <div class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="بريدك الإلكتروني">
+                    <button class="btn btn-primary" id="subscribeBtn">اشترك</button>
+                </div>
+                <p class="newsletter-note">نعدك بعدم إرسال بريد مزعج!</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2026 Gaza Workspaces. جميع الحقوق محفوظة. | صمم بحب ❤️ لغزة</p>
+        </div>
+    </footer>
+
+    <!-- تنبيه الحجز -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-text">
+            <h4>تم تأكيد حجزك بنجاح!</h4>
+            <p>سيصلك إشعار تأكيد على بريدك الإلكتروني ورقم هاتفك.</p>
+        </div>
+        <button class="notification-close" id="notificationClose">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- مكتبات JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ملفات JavaScript الخاصة بنا -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
